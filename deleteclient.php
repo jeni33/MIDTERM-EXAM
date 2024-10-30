@@ -10,20 +10,29 @@
 <style>
 	body {
 			font-family: "system-ui";
-			background-color: #FDE0DF;
+			background-color: #CDC1FF;
 		}
 	input {
 			font-size: 1.5em;
 			height: 40px;
 			width: 200px;
-			background-color: #FDE0DF;
+			background-color: #F3F3E0;
 		}
+    input [type="submit"]{
+        font-weight: bolder;
+        }
+    td, th {
+        text-align: center;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
 </style>
 <body>
 	<a href="index.php">Return to home</a>
 	<h1>Are you sure you want to delete this client?</h1>
 	<?php $getClientByID = getClientByID($pdo, $_GET['client_id']); ?>
-	<div class="container" style="border-style: solid; height: 380px; background-color: #F1EBDA;">
+	<div class="container" style="border-style: solid; height: 250px; background-color: #F1EBDA;">
 		<h2>First Name: <?php echo $getClientByID['first_name']; ?></h2>
 		<h2>Last Name: <?php echo $getClientByID['last_name']; ?></h2>
 		<h2>Contact Number: <?php echo $getClientByID['contact_number']; ?></h2>
