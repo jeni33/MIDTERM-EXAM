@@ -23,6 +23,26 @@
         }
 </style>
 <body>
+	<?php if (isset($_SESSION['message'])) { ?>
+		<h1 style="color: red;"><?php echo $_SESSION['message']; ?></h1>
+	<?php } unset($_SESSION['message']); ?>
+
+
+
+	<?php if (isset($_SESSION['username'])) { ?>
+		<h1>Hello there!! <?php echo $_SESSION['username']; ?></h1>
+		<a href="core/handleForms.php?logoutAUser=1">Logout</a>
+	<?php } else { echo "<h1>No user logged in</h1>";}?>
+
+	<h3>Users List</h3>
+	<ul>
+		<?php $getAllUsers = getAllUsers($pdo); ?>
+		<?php foreach ($getAllUsers as $row) { ?>
+			<li>
+				<a href="viewuser.php?user_id=<?php echo $row['user_id']; ?>"><?php echo $row['username']; ?></a>
+			</li>
+		<?php } ?>
+	</ul>
 	<h1>Welcome to the Loan Management System! Kindly fill out the client details.</h1>
 	<form action="core/handleForms.php" method="POST">
 		<p>
